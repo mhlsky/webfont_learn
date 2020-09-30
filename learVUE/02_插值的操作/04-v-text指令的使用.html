@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{mesg}} ,李银河!</h2>
+    <!-- v-text指令会覆盖标签内容 -->
+    <h2 v-text="mesg">,李银河</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message:'v-text指令：',
+        mesg: '你好'
+      },
+      methods: {
+       
+
+      }
+    });
+  </script>
+</body>
+
+</html>

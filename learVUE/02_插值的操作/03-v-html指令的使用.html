@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{message}}
+    <!-- 直接显示了字符串 -->
+    <p>{{url}}</p>
+    <!-- 解析为HTML展示 -->
+    <p v-html = "url"> </p>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: '233',
+        url: '<a href="www.baidu.com">百度一下</a>'
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
