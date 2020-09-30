@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .activeaaa{
+      color: red;
+    }
+    .line{
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 此处绑定data中的数据，vm.active，实际为 activeaaa   -->
+    <h2 :class="active">v-bind动态绑定class</h2>
+    <!-- {类名：bool值,...}，此处类名直接写定义的类名 -->
+    <h2 v-bind:class="{activeaaa:isactive,line:isline}">颜色变换区域1</h2>
+    <!-- 放在方法中 -->
+    <h2 v-bind:class="getClass()">颜色变换区域2</h2>
+    <button v-on:click="btnClick">转换颜色</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        active:'activeaaa',
+        isactive: true,
+        isline: false,
+      },
+      methods: {
+        btnClick: function(){
+          this.isactive=!this.isactive;
+          this.isline=!this.isline;
+        },
+        getClass: function(){
+          return {activeaaa:this.isactive,line:this.isline}
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

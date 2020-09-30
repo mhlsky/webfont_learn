@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 动态绑定属性值 -->
+    <img v-bind:src="imgURL" alt="">
+    <!-- 语法糖写法 -->
+    <img :src="imgURL" alt="">
+
+
+    <a :href="URL">aaaaaaaaaa</a>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        imgURL:' https://img-blog.csdnimg.cn/20190919091752307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdfZ3Vhbmcz,size_16,color_FFFFFF,t_70',
+        URL: 'https://www.baidu.com'
+      },
+      methods: {}
+  
+    });
+  </script>
+</body>
+
+</html>
