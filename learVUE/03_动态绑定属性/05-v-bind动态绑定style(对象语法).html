@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- :style='{key(属性名)：value（属性值）}' -->
+    <h2 :style="{fontSize:fontsize+'px'}">v-bind绑定style(对象方法)</h2>
+    <h2 :style="getStyles()">v-bind绑定style(对象方法)</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        fontsize:75,
+      },
+      methods: {
+        getStyles: function(){
+          return {fontSize:this.fontsize+'px'}
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

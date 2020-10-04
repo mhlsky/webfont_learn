@@ -10,17 +10,14 @@
 </head>
 
 <body>
-  <div id="app">
-    <ul>
-      <li v-for="item  in movies">{{item}}</li>
-    </ul>
-  </div>
+  <div id="app"></div>
 
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        movies:['海王','海尔兄弟','火影忍者'],
+        firstname:"孟",
+        lastname:"hl",
       },
       methods: {}
     });

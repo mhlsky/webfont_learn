@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 双引号为变量名   等同于class="active title"  -->
+    <h2 :class="['active','title']">对象绑定数组语法1</h2>
+    <!-- 不加的       vue 的data变量  等同于class="122 233"-->
+    <h2 :class="[active,title]">对象绑定数组语法2</h2> 
+    <!-- 函数方式 -->
+    <h2 :class='getClass()'>对象绑定数组语法3 </h2>
+  </div > 
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        active:'122',
+        title: '233'
+      },
+      methods: {
+        getClass: function(){
+          return [this.active,this.title];
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
