@@ -13,11 +13,11 @@
   <div id="app">
     <!-- 一、显示加个空格 -->
     <h2>{{firstname + ' ' + lastname}}</h2>
-    <h2>{{firstname }} + ' ' + {{lastname}}</h2>
+    <h2>{{firstname }} {{lastname}}</h2>
     <!-- 二、通过方法展示 -->
-
-    <!-- 计算属性的展示方式 -->
-
+    <h2>{{getfullname()}}</h2>
+    <!-- 三、计算属性的展示方式 -->
+    <h2>{{fullname}}</h2>
 
   </div>
 
@@ -28,8 +28,14 @@
         firstname:"孟",
         lastname:"hl",
       },
+      // computed:函数名一般不加动词,实现get方法
+      computed: {
+        fullname: function () {
+          return this.firstname + ' ' + this.lastname;
+        }
+      },
       methods: {
-        getfullname:function(){
+        getfullname(){
           return this.firstname + ' ' + this.lastname;
         }
       }
