@@ -10,7 +10,16 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <!-- 一、显示加个空格 -->
+    <h2>{{firstname + ' ' + lastname}}</h2>
+    <h2>{{firstname }} + ' ' + {{lastname}}</h2>
+    <!-- 二、通过方法展示 -->
+
+    <!-- 计算属性的展示方式 -->
+
+
+  </div>
 
   <script>
     var vm = new Vue({
@@ -19,7 +28,11 @@
         firstname:"孟",
         lastname:"hl",
       },
-      methods: {}
+      methods: {
+        getfullname:function(){
+          return this.firstname + ' ' + this.lastname;
+        }
+      }
     });
   </script>
 </body>
