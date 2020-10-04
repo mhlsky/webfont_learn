@@ -11,18 +11,15 @@
 
 <body>
   <div id="app">
-    <!-- 双引号为变量名   等同于class="active title"  -->
-    <h2 :class="['active','title']">对象绑定数组语法1</h2>
-    <!-- 不加的       vue 的data变量  等同于class="122 233"-->
-    <h2 :class="[active,title]">对象绑定数组语法2</h2> 
+    <h2 :style="[baseStyle,baseStyle1]">v-bind动态绑定Style(数组语法)</h2>
   </div>
 
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        active:'122',
-        title: '233'
+        baseStyle: {backgroundColor:'red'},
+        baseStyle1: {fontSize:'50px'},
       },
       methods: {}
     });

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<!-- 需求：
+         点击列表中得到哪一项，那么该项颜色变红
+
+-->
+
+
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index)  in movies" :class='{active:index==mark}' v-on:click='swift(index)'>{{item}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        movies:['海王','海尔兄弟','火影忍者','进击的巨人'],
+        mark:-1,
+      },
+      methods: {
+        swift: function(index){
+          if(this.mark==index){
+            this.mark=-1;
+          }else{
+            this.mark=index;
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
