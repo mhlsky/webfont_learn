@@ -27,7 +27,10 @@
     </form>
 
     <!-- 3:   .监听某个键盘的键帽 -->
-    <input type="text" @keyup="keyUp">
+    <input type="text" @keyup.enter="keyUp">
+
+    <!-- 4：  .once -->
+    <button @click.once="btnOnce">4.once</button>
   </div>
 
   <script>
@@ -46,6 +49,9 @@
         },
         keyUp(){
           console.log("keyUp")
+        },
+        btnOnce(){
+          console.log("once  only！")
         }
       }
     });
