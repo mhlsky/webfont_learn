@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app"><h2>{{fullName}}</h2></div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName:'meng',
+        lastName:'hong liang',
+      },
+      computed: {
+        // 简写 实际上,自动调用了get()：
+        // fullName: function(){
+        //   return this.firstName+' '+lastName;
+        // }
+        
+        //完整写法：
+        //为一个属性，属性是个对象
+        //实现getter\setter
+        //给fullname赋值时，自动调用set(),如果没有set，则计算属性无法被修改
+        fullName: {
+          // set: function(newvalue){
+          //   //一般计算属性不实现set属性
+          //   const newname = newvalue.split(' ');
+          //   this.lastName = newname[1];
+          //   this.firstName = newname[0];
+          //   console.log( "自动调用了set修改后："+newname);
+          // },
+          get:function(){
+            return this.firstName+' '+this.lastName; 
+          }
+        }
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

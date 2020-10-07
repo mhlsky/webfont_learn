@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<!-- 
+
+    计算属性有缓存，执行一遍，多次使用
+    methods用几次，执行几次
+
+    观察控制台调用次数
+ -->
+<body>
+  <div id="app">
+    <!-- 直接拼接 语法过于繁琐-->
+    <h1 v-pre>直接拼接   {{firstName}} {{lastName}}</h1>
+    <h1>{{firstName}} {{lastName}}</h1>
+    <!-- 通过自定义methods -->  
+    <h1 v-pre>通过自定义methods   {{getfullname()}}</h1>
+    <h1>{{getfullname()}}</h1>
+    <h1>{{getfullname()}}</h1>
+    <h1>{{getfullname()}}</h1>
+    <h1>{{getfullname()}}</h1>
+
+    <!-- 通过计算属性 -->
+    <h1 v-pre>通过计算属性  {{fullname}}  </h1>
+    <h1>{{fullname}}</h1>
+    <h1>{{fullname}}</h1>
+    <h1>{{fullname}}</h1>
+    <h1>{{fullname}}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName:'meng',
+        lastName:'hong liang',
+      },
+      methods: {
+        getfullname(){
+          console.log("methods函数调用运行")
+          return this.firstName + ' ' + this.lastName;
+        }
+      },
+      computed: {
+          fullname: function(){
+            console.log("计算属性函数调用运行")
+          return this.firstName+' '+this.lastName;
+        }
+
+      }
+    });
+  </script>
+</body>
+
+</html>

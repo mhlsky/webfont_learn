@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>总价格：{{totolePrice}}</h2>
+    <h2>总价格：{{totolePrice1}}</h2>
+    <h2>总价格：{{totolePrice2}}</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        books:[
+          {id: 110,name: 'vue指南', price: 119},
+          {id: 111,name: '代码大全', price: 102},
+          {id: 112,name: '深入理解计算机原理', price: 121}
+        ]
+      },
+      computed: {
+        totolePrice:function(){
+          let result=0;
+          for(let i=0;i<this.books.length;i++){
+              result+=this.books[i].price;
+              
+          }
+          return result;
+        },
+        //ES6语法实现：
+        // 一：
+        totolePrice1:function(){
+          let result=0;
+          for(let i in this.books){
+              result+=this.books[i].price;
+              
+          }
+          return result;
+        },
+        // 二：
+        totolePrice2:function(){
+          let result=0;
+          for(let book of this.books){ 
+              result+=book.price;
+              
+          }
+          return result;
+        }
+
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
