@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<!-- 在时间监听函数添加时，函数不传参数的情况下，可以不填（）,
+    但是在mactache语法中不能
+-->
+<body>
+  <div id="app">
+    <!-- 时间调用的方法没有参数 -->
+    <h2>时间调用的方法没有参数</h2>
+    <button type="" @click="bnt1Cilck()">11</button>
+    <button type="" @click="bnt1Cilck">11</button>
+
+    <!--  在事件定义时,写函数时省略了小括号,但是方法本身需要一个参数时-->
+    <!-- 此时,Vue会默认将浏览器产生的event事件对象,传进方法-->
+    <h2>在事件定义时,写函数时省略了小括号,但是方法本身血药一个参数时</h2>
+    <button @click="bnt2Click(123)">22</button>
+    <button @click="bnt2Click">22</button>
+    <!-- 方法定义时,我们需要event事件,同时有需要其他参数     -->
+    <!-- 此时Vue将浏览器事件传进第一个参数 -->
+    <h2>方法定义时,我们需要event事件,同时有需要其他参数 </h2>
+    <button @click="btn3Click">33</button>
+    <button @click="btn3Click(123 )">33</button><!--此时,event不会自动传进第二个参数-->
+    <button @click="btn3Click(123,event)">33</button><!--此时,event被当成data{}中的属性,或者methods一个方法了,报event未被定义的错误-->
+    <!-- 想要手工拿到event对象，我们需要写--------------------!!!!!!!   $event      -->
+    <button @click="btn3Click('asd',$event)">33</button>
+
+  </div>
+
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        bnt1Cilck(){
+          console.log("btnclick");
+        },
+        bnt2Click(event){
+          console.log(event);
+        },
+        btn3Click(abc,event){
+          console.log("====",abc,event);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

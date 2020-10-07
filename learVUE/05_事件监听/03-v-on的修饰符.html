@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 1:    .stop --> 
+    <!-- 当点击button时，divClick也运行了，因为事件冒泡 -->
+    <!-- 为了阻止事件冒泡，可以用修饰符   .stop   -->
+    <div @click="divClick">
+      ##############
+      <button @c lick.stop="btnClick">按钮</button>
+    </div>
+    
+    <!-- 2:    .prevent  -->
+    <!-- 阻止默认事件 -->
+    <form action="baidu">
+      <input type="text">
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+    <!-- 3:   .监听某个键盘的键帽 -->
+    <input type="text" @keyup="keyUp">
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        btnClick(){
+          console.log("btnClick")
+        },
+        divClick(){
+          console.log("divClick")
+        },
+        submitClick(){
+          console.log("submint")
+        },
+        keyUp(){
+          console.log("keyUp")
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
