@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>v-if:当条件为false时，元素并未出现在DOM中，改为true时，需要重新创建。</p>
+    <p>v-show:仅仅控制style的display:none   在DOM中一直存在，知识改变了样式。</p>
+    <p><strong>如何选择呢？</strong>频繁切换就选v-show</p>
+    <h2 v-show="isShow">v-show的使用</h2>
+    <h2 v-if="isShow">v-if做对比</h2>
+
+
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        isShow:false,
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
