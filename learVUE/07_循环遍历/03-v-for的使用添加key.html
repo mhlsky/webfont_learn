@@ -1,26 +1,67 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <script src="../js/vue.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+ 
 </head>
-
 <body>
-  <div id="app"></div>
+    <div id="app" >
 
-  <script>
+      <!-- 
+        选择节点，运行观察下列状态
+       -->
+
+      <!-- 1.不添加key的情况下，dom的状态被保持在固定顺序的选项上，插入的节点可能会代替原有节点的状态 -->
+      <h2>节点不添加key</h2>
+        <div>
+            <input type="text" v-model="name" >
+            <button @click="add">添加</button>
+        </div>
+        <ul>
+            <li v-for="item in list">
+                <input type="checkbox">ID：{{item.id}} -------name：{{item.name}}
+            </li>
+        </ul>
+      <!--2.添加key后，dom被唯一的id确定，状态跟着id走  -->
+      <h2>节点添加key</h2>
+      
+      <div>
+          <input type="text" v-model="name" >
+          <button @click="add">添加</button>
+      </div>
+      <ul>
+          <!-- 注意：key的取值必须是number 或 string，不能是对象 -->
+          <!-- 而且 使用 v-for 循环的每一项的值，都要保证唯一性 -->
+          <!-- 今后，只要使用 v-for循环，就必须为循环的每一项，添加 :key  属性绑定 -->
+          <li v-for="item in list" :key="item.id">
+              <input type="checkbox">ID：{{item.id}} -------name：{{item.name}}
+          </li>
+      </ul>
+    </div>
+<script>
     var vm = new Vue({
-      el: '#app',
-      data: {
-        letter:['A',]
-      },
-      methods: {}
-    });
-  </script>
+            el:'#app',
+            data:{
+                name: '',
+                list: [
+                    { id:0,name:'小美子1号' },
+                    { id:1,name:'小美子2号' },
+                    { id:2,name:'小美子3号' }
+                ]
+            },
+            methods:{
+                add() {
+                     //    1.拼接处一个完整的用户信息对象，包含ID 和name
+                    const newUser= {id: this.list.length,name: this.name};
+                    //    2.把拼接出来的用户信息对象 调用this.list.unshift方法把对象追加到数组的第一个
+                    this.list.unshift(newUser);
+                }
+            }
+    })
+</script>
 </body>
-
 </html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in letters">{{item}}</li>
+    </ul>
+    <input type="text" v-model="inputstr">
+    <button @click="btnClick(1)">push()(OK)</button>
+    <button @click="btnClick(2)">pop(OK)</button>
+    <button @click="btnClick(3)">shift(OK)</button>
+    <button @click="btnClick(4)">unshift()(OK)</button>
+    <button @click="btnClick(5)">splice()(OK)</button>
+    <button @click="btnClick(6)">sort()(OK)</button>
+    <button @click="btnClick(7)">reverse()(OK)</button>
+    <button @click="btnClick(8)">````通过索引改变值(NO!!!!!!!)</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        letters:['a','b','c','d'],
+        inputstr:'',
+      },
+      methods: {
+        btnClick(choice){
+          switch (choice){
+            case 1:
+              //1、push()(可以)
+              this.letters.push(this.inputstr);
+              break;
+            case 2:
+              //2、pop()(可以)  
+              this.letters.pop();
+              break;
+            case 3:
+              //3、shift()(可以)
+              this.letters.shift();
+              break;
+            case 4:
+              //4、unshift()(可以)
+              this.letters.unshift(this.inputstr);
+              break;
+            case 5:
+              //5、splice(start,num_of_delete,add_after_delet[])(可以)
+              //插入、删除、替换
+              //splice(start),只传一个参数，删除start以及后面的全部元素
+              this.letters.splice(1,2,'t','i','h','u','a','n');
+              break;
+            case 6:
+              //sort()(可以)
+              this.letters.sort();
+              break;
+            case 7:
+              //reverse()(可以)
+              this.letters.reverse();
+              break;
+            case 8:
+              //通过索引值修改(NO!!!!)
+              this.letters[0]='X';
+              break;
+
+
+            }
+          
+        
+         
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
