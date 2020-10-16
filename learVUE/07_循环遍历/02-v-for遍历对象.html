@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>遍历对象</h2>
+    <ul>
+      <h2>1.遍历对象时，如果只是获取一个值，那么获取的是value</h2>
+      <li v-for="item in info">{{item}}</li>
+    </ul>
+    <ul>
+      <h2>2.获取key\value</h2>
+      <li v-for="(value,key) in info">{{key}}:{{value}}</li>
+    </ul>
+    <ul>
+      <h2>3.获取key\value\index</h2>
+      <li v-for="(value,key,index) in info">{{index}}--{{key}}:{{value}}</li>
+    </ul>
+    <ul>
+      <h2>4.遍历对象数组</h2>
+      <li v-for="(item,index) in info1">{{index}}--{{item.name}}:{{item.ager}}</li>
+    </ul>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        info:{
+          name:"mhlsky",
+          ager:18,
+          height:1.88
+        },
+        info1:[{ name:"mhlsky",
+          ager:18,
+          height:1.88},
+        {
+          name:"ssss",
+          ager:28,
+          height:2.88
+        }]
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>
