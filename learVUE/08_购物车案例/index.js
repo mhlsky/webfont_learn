@@ -36,11 +36,25 @@ const app = new Vue({
     getFinal (price){
       return "￥"+price.toFixed(2) 
     },
-    decrement(){
-      this.
+    decrement(index){
+      if(this.list[index].count>1)
+        this.list[index].count--;
+
     },
-    increment(){
-      
+    increment(index){
+      this.list[index].count++;
+    },
+    deletea(index){
+      this.list.splice(index,1);
+    }
+  },
+  computed:{
+    totalPrice(){
+      let total=0;
+      for(let i = 0;i<this.list.length;i++){
+          total+=this.list[i].price*this.list[i].count;
+      }
+      return total;
     }
   },
   filters: {

@@ -6,34 +6,38 @@
   <title>Document</title>
   <link rel="stylesheet" href="./style.css">
 </head>
+<!-- 本例子引入过滤器概念filters -->
 <body>
   <div id="app">
-    <table>
-      <thead>
-          <th></th>
-          <th>书籍名称</th>
-          <th>出版日期</th>
-          <th>价格</th>
-          <th>购买数量</th>
-          <th>操作</th>
-      </thead>
-      <tbody>
-        <tr v-for="item in list" >
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.date}}</td>
-          <!-- <td>{{getFinal(item.price)}}</td> -->
-          <td>{{item.price | showPrice}}</td>
-          <td>
-              <button @click="decrement">-</button>
-              {{item.count}}
-              <button @click="increament">+</button>
-          </td>
-          <td><button>移除</button></td>
-        </tr>
-      </tbody>
-    </table>
-    <h2>总价格：</h2>
+    <div v-if="list.length">
+      <table>
+        <thead>
+            <th></th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in list" >
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <!-- <td>{{getFinal(item.price)}}</td> -->
+            <td>{{item.price | showPrice}}</td>
+            <td>
+                <button @click="decrement(index)" v-bind:disable="item.count <=1">-</button>
+                {{item.count}}
+                <button @click="increment(index)">+</button>
+            </td>
+            <td><button @click="deletea(index)">移除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>总价格：{{totalPrice}}</h2>
+    </div>
+    <h2 v-else>购物车为空</h2>
   </div>
 
 
