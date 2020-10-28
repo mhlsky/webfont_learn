@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>1.修饰符：lazy(只在失去焦点和回车时更新)</h2>
+    <input type="text" v-model.lazy="data">
+    <h2>{{data}}</h2>
+    <h2>2.修饰符:number    v-model默认复制为string</h2>
+    <input type="number" v-model="age1">
+    <h2>{{typeof age1}}</h2>
+    <input type="number" v-model.number="age2">
+    <h2>{{typeof age2}}</h2>
+    <h2>修饰符：trim  剥离空格</h2>
+    <input type="text" v-model.trim="name">
+    <h2>:{{name}}</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        data:'',
+        age1:'',
+        age2:'',
+        name:'',
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

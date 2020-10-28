@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>v-model 实现双向绑定</h2>
+    <h2>v-model其实诗歌语法糖，包含v-bind绑定value属性；v-on绑定input事件</h2>
+    <input type="text" v-model="msg">
+    <h2>实现原理</h2>
+    <h2>1.msg向input的绑定v-value</h2>v-on:input
+    <input type="text" :value="msg">
+    <h2>2.input向msg绑定 v-on:input  绑定事件</h2>
+    <!-- <input type="text" @input="valueChange"> -->
+    <input type="text" @input="msg=$event.target.value">
+    <h2>{{msg}}</h2>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg:'aaa',
+      },
+      methods: {
+        valueChange(event){
+          this.msg = event.target.value;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
