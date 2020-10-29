@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>为什么要设计组件的data为函数？</h2>
+    <P>data函数返回一个数据对象，使得每一个组件实例的数据生成自己的对象。不共享数据</P>
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>当前计数{{count}}</h2>
+      <button @click="decrement">-</button>
+      <button @click="increment">+</button>
+    </div>
+  </template>
+  <script>
+    Vue.component('cpn',{
+      template:'#cpn',
+      data(){
+        return{
+          count:0,
+        }
+      },
+      methods:{
+        increment(){
+          this.count++;
+        },
+        decrement(){
+          this.count--;
+        }
+      }
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

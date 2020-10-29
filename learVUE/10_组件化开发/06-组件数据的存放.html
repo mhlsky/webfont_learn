@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+  </div>
+  <template id="cpn1">
+    <div >
+      <h2>一个组件cpn1 {{title}}</h2>
+      <p>组件内容<p> 
+    </div>
+  
+  </template>
+  <script>
+    //组件不可访问Vue实例的数据，他有自己的data
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      components:{
+        'cpn1':{
+          template:'#cpn1',
+          //data:founction(){  },
+          data(){
+            return {
+              title:'abc',
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
