@@ -10,25 +10,9 @@
 </head>
 
 <body>
-  <div id="app">
-    <!-- step3.使用组件 -->
-    <my-con></my-con>
-    <my-con></my-con>
-    <my-con></my-con>
-  </div>
+  <div id="app"></div>
 
-  <script> 
-  //step1.创建组件构造器
-    const cmp = Vue.extend({
-      template:`
-        <div>
-          <h2>此处组件</h2>
-          <h2>内容<h2>
-        </div>
-      `
-    })
-    //step2.注册组件
-    Vue.component('my-con',cmp)
+  <script>
     var vm = new Vue({
       el: '#app',
       data: {},
