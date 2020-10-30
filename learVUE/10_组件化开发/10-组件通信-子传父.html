@@ -10,14 +10,26 @@
 </head>
 
 <body>
+  <!-- 父组件模版 -->
   <div id="app">
-    <h2>
-      <p>1.通过prop向子组件传递消息</p>
-      <p>2.通过事件向父组件发送消息</p>
-    </h2>
+
   </div>
 
+  <!-- 子组件模版 -->
+  <template id="cpn">
+    <div>
+      
+    </div>
+  </template>
   <script>
+    const cpn = {
+      template:'#cpn',
+      data(){
+        return {
+          
+        }
+      }
+    }
     var vm = new Vue({
       el: '#app',
       data: {},

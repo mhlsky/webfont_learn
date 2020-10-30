@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :c-info="info"></cpn>
+  </div>
+  <template id="cpn">
+    <h2>{{cInfo}}</h2>
+  </template>
+  <script>
+    const cpn = {
+      template:'#cpn',
+      //数据命名使用驼峰的话，标签中转为‘-’连接
+      //如：cInfo
+      //在标签中应使用c-info
+      props:{
+        // cinfo:{
+        //   type:Object,
+        //   default(){
+        //    return {}
+        //   }
+        // }
+        cInfo:Object
+      }
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        info:{
+          name:'mhlsky',
+          age:18,
+          height:1.88
+        }
+      },
+      methods: {},
+      components:{
+        cpn
+      }
+    });
+  </script>
+</body>
+
+</html>
