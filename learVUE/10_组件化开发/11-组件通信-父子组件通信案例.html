@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<!-- 
+  子组件的值修改，同步父组件的data，子组件的props
+ -->
+<body>
+  <div id="app">
+    <cpn :number1="num1" :number2="num2" @n1chg="n1chg" @n2chg="n2chg"></cpn>
+
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>props：{{number1}}</h2>
+      <h2>data：{{n1}}</h2>
+      <input type="text" :value="n1" @input="n1Input">
+      <h2>props：{{number2}}</h2>
+      <h2>data：{{n2}}</h2>
+      <input type="text" :value="n2" @input="n2Input">
+    </div>
+  </template>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        n1chg(n1) {
+          this.num1 = parseInt(n1)
+        },
+        n2chg(n2) {
+          this.num2 = parseInt(n2)
+
+        }
+      },
+      components: {
+        cpn: {
+          template: `#cpn`,
+          props: {
+            number1 :Number,
+            number2:Number
+          },
+          data() {
+            return {
+              n1: this.number1,
+              n2: this.number2
+            }
+          },
+          methods: {
+            n1Input(event) {
+              this.n1 = event.target.value;
+              this.$emit("n1chg", this.n1)
+            },
+            n2Input(event) {
+              this.n2 = event.target.value;
+              this.$emit("n2chg", this.n2)
+
+            },
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

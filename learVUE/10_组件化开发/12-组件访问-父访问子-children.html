@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn ref="aaa"></cpn>
+    <cpn></cpn>
+    <button @click="btnClick">按钮</button>
+  </div>
+
+  <template id="cpn">
+    <h2>我是子组件</h2>
+  </template>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        btnClick(){
+          //$children默认获得全部子组件
+          //console.log(this.$children)
+          //this.$children[0].showMsg()
+          //$refs 默认为空，必须在组件上家ref属性，才会获得
+          console.log(this.$refs.aaa)
+        }
+      },
+      components:{
+        cpn:{
+          template:`#cpn`,
+          data(){
+            return {
+              name:'我是name'
+            }
+          },
+          methods:{
+            showMsg(){
+              console.log("showMsg")
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
