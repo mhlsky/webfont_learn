@@ -11,33 +11,32 @@
 
 <body>
   <div id="app">
-    <cpn :number1="num1"></cpn>
-    <cpn :number2="num2"></cpn>
+    
+    <h2>1.具有多个没有名字的插槽时，只传入一个值，全部被替换，故引出具名插槽</h2>
 
+    <h2>2.具名的插槽：</h2>
+    <cpn>
+      <span slot="left">替换left内容</span>
+      <span slot="mid">替换mid内容</span>
+      <span slot="right">替换right内容</span>
+    </cpn>
   </div>
   <template id="cpn">
     <div>
-      <h2>{{number1}}</h2>
-      <input type="text" >
-      <h2>{{number2}}</h2>
+      <slot name="left"><span>left</span></slot>
+      <slot name="mid"><span>mid</span></slot>
+      <slot name="right"><span>right</span></slot>
     </div>
-  </template>
 
+  </template>
   <script>
     var vm = new Vue({
       el: '#app',
-      data: {
-          num1:1,
-          num2:0
-      },
+      data: {},
       methods: {},
       components:{
         cpn:{
           template:`#cpn`,
-          props:{
-            number1:Number,
-            number2:Number
-          }
         }
       }
     });

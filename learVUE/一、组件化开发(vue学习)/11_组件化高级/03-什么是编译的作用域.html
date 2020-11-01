@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- ishow 使用了Vue实例的ishow -->
+    <cpn v-show ="ishow"></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>子组件</h2>
+    </div>
+
+  </template>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        //------------------------理解作用域
+        ishow:true,
+      },
+      methods: {},
+      components:{
+        cpn:{
+          template:`#cpn`,
+          data(){
+            return {
+              //-------------------理解作用域
+              ishow:false,
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
