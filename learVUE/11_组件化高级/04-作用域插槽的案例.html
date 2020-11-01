@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+</head>
+<!-- 父组件替换插槽的标签，但是内容由子组件提供 -->
+<body>
+  <div id="app">
+    <cpn ></cpn>
+    <cpn > 
+      <!-- 获取子组件的数据，填入插槽 -->
+      <!-- 引用插槽对象 -->
+      <template slot-scope="slot">
+        <!-- 引用数值 -->
+        <span v-for="item in slot.pdata">{{item}}-</span>
+      </template>
+
+    </cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <!-- 数据绑定 -->
+      <slot :pdata = "p">
+        <ul>
+          <li v-for="item in p ">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+
+  </template>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+      },
+      methods: {},
+      components:{
+        cpn:{
+          template:`#cpn`,
+          data(){
+            return {
+              p:["GO","C++","JAVA","SWIFT","JAVASCRIPT"]
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
