@@ -12,28 +12,50 @@
 <body>
   <!-- 父组件模版 -->
   <div id="app">
-
+    <!-- 接受事件 -->
+    <cpn1 @itemclick="cpnClick"></cpn1>
   </div>
 
   <!-- 子组件模版 -->
   <template id="cpn">
     <div>
-      
+      <button v-for="item in categories" @click="btnClick(item)">
+        {{item.name}}
+      </button>
     </div>
   </template>
   <script>
-    const cpn = {
+    const cpn1 = {
       template:'#cpn',
       data(){
         return {
-          
+          categories:[{id:'aaa',name:"热门推荐"},
+                      {id:'bb',name:"手机推荐"},
+                      {id:'cc',name:"衣服推荐"},
+                      {id:'dd',name:"电子推荐"},
+        
+        ]
+        }
+      },
+      methods:{
+        btnClick(item){
+          console.log(item)
+          //发射事件itemclick
+          this.$emit('itemclick',item)
         }
       }
     }
     var vm = new Vue({
       el: '#app',
       data: {},
-      methods: {}
+      methods: {
+        cpnClick(item){
+          console.log('sss'+item.name)
+        }
+      },
+      components:{
+        cpn1,
+      }
     });
   </script>
 </body>
