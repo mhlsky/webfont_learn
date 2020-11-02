@@ -7,3 +7,5 @@ console.log(name);
 console.log(age);
 console.log(height);
 
+//依赖css文件
+require('./css/normal.css') 
