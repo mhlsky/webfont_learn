@@ -30,5 +30,5 @@ var moduleA = (
 //1，匿名函数解决变量的声明与作用域，
 //2，返回函数解决代码复用性
 
-//目前常见的模块化方案：*CommomJS                  (AMD\CMD)不常用
-//                    *ES6的Modules    
+//目前常见的模块化方案：*CommomJS  {  module.export{ }   const {  } = require("")   }                 (AMD\CMD)不常用
+//                    *ES6的Modules  { export{}     import    from      }  
