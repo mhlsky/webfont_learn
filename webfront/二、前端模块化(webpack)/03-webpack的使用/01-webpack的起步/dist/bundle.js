@@ -65,12 +65,20 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__info__ = __webpack_require__(2);
 const {add,mul} = __webpack_require__(1)
 
 console.log(add(20,30));
 console.log(mul(20,30));
+
+console.log(__WEBPACK_IMPORTED_MODULE_0__info__["c" /* name */]);
+console.log(__WEBPACK_IMPORTED_MODULE_0__info__["a" /* age */]);
+console.log(__WEBPACK_IMPORTED_MODULE_0__info__["b" /* height */]);
+
 
 
 /***/ }),
@@ -86,6 +94,21 @@ function mul(a,b){
 }
 
 module.exports={add,mul}
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const name = 'mhlsky'
+/* harmony export (immutable) */ __webpack_exports__["c"] = name;
+
+const age = 18
+/* harmony export (immutable) */ __webpack_exports__["a"] = age;
+
+const height = 1.88
+/* harmony export (immutable) */ __webpack_exports__["b"] = height;
+
 
 /***/ })
 /******/ ]);
