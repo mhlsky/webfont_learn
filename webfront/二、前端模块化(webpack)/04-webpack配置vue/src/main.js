@@ -16,10 +16,12 @@ require('./css/speacial.less')
 document.writeln('<h2>你好，mhlsky!</h2>')
 //使用Vue开发
 import Vue from 'vue'
-
+//import App from './vue/app'
+import App from './vue/App.vue'
 new Vue({
   el:'#app',
-  data:{
-    msg:'hello webpack'
+  template:`<App/>`,
+  components:{
+    App
   }
 })
