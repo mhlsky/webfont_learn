@@ -6,7 +6,7 @@
 + es5转至es6规范的补充学习
 + vue框架的整体学习
 + 模块化
-+ webpack的学习
++ webpack的学习(npm)
 + vue cil
 等
 
