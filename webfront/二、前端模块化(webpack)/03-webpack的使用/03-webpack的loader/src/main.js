@@ -7,5 +7,10 @@ console.log(name);
 console.log(age);
 console.log(height);
 
+
 //依赖css文件
 require('./css/normal.css') 
+
+//依赖less文件
+require('./css/speacial.less')
+document.writeln('<h2>你好，mhlsky!</h2>')
