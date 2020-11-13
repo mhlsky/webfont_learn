@@ -14,3 +14,4 @@ require('./css/normal.css')
 //依赖less文件
 require('./css/speacial.less')
 document.writeln('<h2>你好，mhlsky!</h2>')
+ 

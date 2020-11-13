@@ -3,7 +3,8 @@ module.exports={
   entry:'./src/main.js',
   output:{
     path:path.resolve(__dirname,'dist'),
-    filename:'bundle.js'
+    filename:'bundle.js',
+    publicPath:'dist/'
   },
   module: {
     rules: [
@@ -25,7 +26,23 @@ module.exports={
             }
         }
         ]
-      }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              //当加载的图片小于limit时，加载为base64的字符串
+              limit: 15000,
+              name:'img/[name].[hash:8].[ext]'
+            },
+           
+
+          }
+        ]
+      },
+     
     ]
   }
 }
